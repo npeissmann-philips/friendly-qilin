@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.log
+*.bat
+*.cjs
+_tmp_*
+.npm_cache/
