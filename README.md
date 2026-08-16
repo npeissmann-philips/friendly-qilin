@@ -1,145 +1,148 @@
-# 🚀 LLM & AI Agent Architecture Study Roadmap
+# 🤖 LLM & AI Agent Architecture Study Roadmap
 
-Este repositório é um projeto de estudo prático focado no domínio de **Engenharia de Prompt, RAG (Retrieval-Augmented Generation), Tool Calling, Orquestração de Agentes (LangChain/LangGraph) e LLMOps**.
+[🌐 **Português (Brasil)**](README.pt-BR.md)
 
-O objetivo final é construir uma base sólida em arquitetura de inteligência artificial aplicável a cenários corporativos de alta complexidade.
+This repository is a hands-on study project focused on mastering **Prompt Engineering, RAG (Retrieval-Augmented Generation), Tool Calling, Agent Orchestration (LangChain / LangGraph), and LLMOps**.
+
+The ultimate goal is to build a solid foundation in Artificial Intelligence Architecture applicable to complex enterprise scenarios.
 
 ---
 
-## 🛠️ Tecnologias & Ferramentas
+## 🛠️ Tech Stack & Tools
 
-- **Runtime & Linguagem:** Node.js, TypeScript
-- **Framework Web:** Express.js, Swagger UI (`swagger-ui-express`)
-- **Provedores de LLM:** Google Gemini API (`@google/genai`), OpenAI API
-- **Frameworks de IA:** LangChain.js, LangGraph
-- **Bancos Vetoriais:** pgvector (PostgreSQL), Pinecone, Weaviate
-- **LLMOps & Observabilidade:** LangSmith
+- **Runtime & Language:** Node.js, TypeScript
+- **Web Framework:** Express.js, Swagger UI (`swagger-ui-express`)
+- **LLM Providers:** Google Gemini API (`@google/genai`), OpenAI API
+- **AI Frameworks:** LangChain.js, LangGraph
+- **Vector Databases:** pgvector (PostgreSQL), Pinecone, Weaviate
+- **LLMOps & Observability:** LangSmith
 - **DevOps & Containers:** Docker, Docker Compose
 
 ---
 
-## 📅 Trilha de Aprendizado
+## 📅 Learning Roadmap
 
-### 🎯 Fase 1: Fundamentos da API e Engenharia de Prompt (1ª Semana)
-*Entendimento do comportamento puro dos LLMs e controle de saídas.*
+### 🎯 Phase 1: API Fundamentals & Prompt Engineering (Week 1)
+*Understanding raw model behavior and controlling model outputs.*
 
-- [ ] **Consumo direto de API:** Implementação de chamadas diretas às APIs (Gemini e OpenAI) sem frameworks intermediários.
-- [ ] **System Prompts vs. User Prompts:** Definição de personas, restrições e regras de negócio no `System Prompt`.
-- [ ] **Parâmetros do Modelo:** Experimentos práticos ajustando `Temperature` (criatividade vs. precisão) e `Max Tokens`.
-- [ ] **Prompting Estruturado:**
-  - **Few-Shot Prompting:** Fornecimento de exemplos dentro do contexto do prompt.
-  - **Chain of Thought (CoT):** Condução do raciocínio passo a passo antes do modelo emitir a resposta final.
-
----
-
-### 🧠 Fase 2: O Padrão RAG (Retrieval-Augmented Generation) (2ª Semana)
-*Capacitação da IA para consultar bases de dados externas e privadas.*
-
-- [ ] **Embeddings:** Estudo e conversão de textos em vetores numéricos de alta dimensão.
-- [ ] **Vector Databases:** Configuração e manipulação de bancos vetoriais (pgvector, Pinecone ou Weaviate).
-- [ ] **Pipeline e Fluxo RAG completo:**
-  1. Leitura e extração de dados de arquivos PDF ou páginas web.
-  2. **Chunking:** Estratégias de divisão de texto em partes menores e relevantes.
-  3. Geração e salvamento dos embeddings no banco vetorial.
-  4. **Rota de Busca:** Vetorização da pergunta do usuário, busca por similaridade vetorial (Cosine/Cosine Similarity, Euclidean Distance) e injeção do contexto recuperado no prompt final.
+- [ ] **Direct API Consumption:** Building a simple project in Node.js/TypeScript to make raw API calls to OpenAI or Gemini without heavy frameworks.
+- [ ] **System Prompts vs. User Prompts:** Learning how to instruct personas, business logic, and strict constraints in System Prompts.
+- [ ] **Model Parameters:** Experimenting with `Temperature` (creativity vs. precision) and `Max Tokens`.
+- [ ] **Structured Prompting:**
+  - **Few-Shot Prompting:** Providing contextual examples directly in the prompt.
+  - **Chain of Thought (CoT):** Requesting the model to explain its step-by-step reasoning before outputting the final answer.
 
 ---
 
-### 🛠️ Fase 3: Tool Calling e o Início dos Agentes (3ª Semana)
-*Transformando o LLM de um gerador de texto em um agente de ação.*
+### 🧠 Phase 2: The RAG Pattern (Retrieval-Augmented Generation) (Week 2)
+*Enabling the AI to query custom and private corporate databases.*
+
+- [ ] **Embeddings:** Transforming text chunks into high-dimensional numerical vectors.
+- [ ] **Vector Databases:** Spinning up a local or free cloud instance of pgvector (PostgreSQL extension), Pinecone, or Weaviate.
+- [ ] **Full RAG Pipeline:**
+  1. Reading and parsing content from PDFs or web pages.
+  2. **Chunking:** Splitting documents into optimal, semantically meaningful text chunks.
+  3. Generating embeddings and storing them in the vector database.
+  4. **Search Route:** Converting user queries into vectors, performing similarity search (Cosine, Euclidean), and injecting retrieved context into the LLM prompt.
+
+---
+
+### 🛠️ Phase 3: Tool Calling & The Dawn of Agents (Week 3)
+*Transforming the LLM from a text generator into an action-taking agent.*
 
 - [ ] **Function / Tool Calling:**
-  - Envio de JSON Schemas descrevendo funções do sistema para o LLM.
-  - Processamento do retorno estruturado do LLM solicitando a execução de funções (ex: `buscar_saldo_cliente(cpf)`).
-  - Execução da função na aplicação e envio do resultado de volta ao LLM.
-- [ ] **Introdução ao LangChain:**
-  - Uso do LangChain.js para encapsulamento de pipelines.
-  - Criação de `Chains` conectando o LLM a ferramentas simuladas (ex: APIs de consulta de CEP, clima ou cotação de moedas).
+  - Defining JSON Schemas describing application functions (e.g., `get_customer_balance(cpf)`).
+  - Handling the LLM's structured JSON response requesting execution of function X with parameters Y.
+  - Executing local code and passing results back to the LLM to formulate the final answer.
+- [ ] **Introduction to LangChain:**
+  - Using LangChain.js to encapsulate complex pipelines.
+  - Building `Chains` connecting the LLM to simulated tools (e.g., mock APIs for Zip Code lookup, weather, or currency exchange).
 
 ---
 
-### 🔄 Fase 4: Orquestração e Fluxos Complexos (4ª Semana)
-*Construção de sistemas multi-agentes e fluxos cíclicos.*
+### 🔄 Phase 4: Orchestration & Complex Workflows (Week 4)
+*Building multi-agent systems and cyclic workflows.*
 
 - [ ] **LangGraph:**
-  - Criação de grafos de decisão e fluxos cíclicos de agentes.
-  - Implementação de nós de avaliação onde o agente analisa a própria resposta, valida a qualidade e decide se refaz a busca ou finaliza.
-- [ ] **Arquitetura Multi-Agente:**
-  - Estudo de padrões de agentes especializados (Agente Pesquisador, Agente Revisor, Agente Gerente).
-  - Replicação de fluxos multi-agente utilizando LangGraph em TypeScript/Node.js.
+  - Designing cyclic graph workflows instead of linear chains.
+  - Creating decision nodes where agents evaluate their own output, validate quality, and decide whether to refine or conclude.
+- [ ] **Multi-Agent Architectures:**
+  - Exploring architectural concepts of specialized agents (Researcher Agent, Reviewer Agent, Manager Agent).
+  - Replicating multi-agent orchestration patterns using LangGraph in TypeScript/Node.js.
 
 ---
 
-### 🛡️ Fase 5: Governança e Produção (LLMOps)
-*Operação, monitoramento e segurança em aplicações corporativas.*
+### 🛡️ Phase 5: Governance & Production (LLMOps)
+*Operating, monitoring, and securing enterprise AI applications.*
 
-- [ ] **Observabilidade de IA:** Integração com ferramentas como **LangSmith** para rastreamento de custos, latência e debug de chamadas aos LLMs.
-- [ ] **Segurança em LLMs:**
-  - Mitigação de **Prompt Injection** (ataques diretos e indiretos).
-  - Sanitização e mascaramento de **PII (Personally Identifiable Information)** para conformidade com LGPD/GDPR.
-- [ ] **Streaming de Respostas:** Implementação de **Server-Sent Events (SSE)** no backend para exibição da resposta em tempo real no frontend.
+- [ ] **AI Observability:** Integrating logging and monitoring tools like **LangSmith** to track token usage, latency, and debug LLM calls.
+- [ ] **LLM Security:**
+  - Mitigating **Prompt Injection** attacks (direct and indirect).
+  - Sanitizing and redacting **PII (Personally Identifiable Information)** for privacy compliance (LGPD/GDPR).
+- [ ] **Response Streaming:** Implementing **Server-Sent Events (SSE)** in the backend to stream responses to the frontend in real-time.
 
 ---
 
-## 📂 Estrutura do Projeto (Sugerida)
+## 📂 Suggested Project Structure
 
 ```text
 .
 ├── src/
-│   ├── phase-1-prompting/     # Testes de chamadas diretas, Few-Shot e CoT
-│   ├── phase-2-rag/           # Pipeline de Chunking, Embeddings e Vector DB
-│   ├── phase-3-tools/         # Tool Calling nativo e Chains com LangChain
-│   ├── phase-4-langgraph/     # Grafos de decisão e Orquestração Multi-Agente
-│   ├── phase-5-llmops/        # Observabilidade, SSE Streaming e Filtros de PII/Prompt Injection
-│   ├── routes/                # Definição das rotas Express
-│   ├── services/              # Integrações com LLMs (Gemini, OpenAI, etc.)
-│   ├── swagger.ts             # Configuração da documentação Swagger UI
-│   └── server.ts              # Ponto de entrada da aplicação
-├── docker-compose.yml         # Containerização do banco vetorial (pgvector/Weaviate)
+│   ├── phase-1-prompting/     # Direct API calls, Few-Shot, CoT experiments
+│   ├── phase-2-rag/           # Chunking, Embeddings, Vector DB pipeline
+│   ├── phase-3-tools/         # Function Calling & LangChain Chains
+│   ├── phase-4-langgraph/     # Decision Graphs & Multi-Agent Orchestration
+│   ├── phase-5-llmops/        # Observability, SSE Streaming, PII/Prompt Injection filters
+│   ├── routes/                # Express API routes
+│   ├── services/              # LLM Service integrations (Gemini, OpenAI)
+│   ├── swagger.ts             # Swagger UI documentation setup
+│   └── server.ts              # Application entry point
+├── docker-compose.yml         # Containerized Vector DB (pgvector/Weaviate)
 ├── Dockerfile
 ├── .env.example
 ├── package.json
-└── README.md
+├── README.md                  # English README
+└── README.pt-BR.md            # Portuguese README
 ```
 
 ---
 
-## 🚦 Como Executar o Projeto
+## 🚦 Getting Started
 
-### Pré-requisitos
+### Prerequisites
 - Node.js (v18+)
-- npm ou yarn
-- Docker Desktop (opcional, para subida do banco vetorial local)
+- npm or yarn
+- Docker Desktop (optional, for local vector database)
 
-### 1. Clonar o repositório e instalar as dependências
+### 1. Clone the repository and install dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Configurar as Variáveis de Ambiente
+### 2. Environment Variables Setup
 
-Crie um arquivo `.env` na raiz do projeto com base no `.env.example`:
+Create a `.env` file based on `.env.example`:
 
 ```env
 PORT=3000
-GEMINI_API_KEY=seu_gemini_api_key_aqui
-OPENAI_API_KEY=seu_openai_api_key_aqui
+GEMINI_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 LANGCHAIN_TRACING_V2=true
-LANGCHAIN_API_KEY=seu_langsmith_api_key_aqui
+LANGCHAIN_API_KEY=your_langsmith_api_key_here
 DATABASE_URL=postgresql://user:password@localhost:5432/vector_db
 ```
 
-### 3. Executar o Servidor em Modo de Desenvolvimento
+### 3. Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Acesse a documentação Swagger em: `http://localhost:3000/api-docs` (quando configurado).
+Access Swagger Documentation at: `http://localhost:3000/api-docs`.
 
 ---
 
-## 📄 Licença
+## 📄 License
 
-Este projeto é destido exclusivamente a fins de estudo e aperfeiçoamento profissional.
+This project is intended strictly for educational and self-study purposes.
