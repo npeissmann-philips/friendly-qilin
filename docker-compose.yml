@@ -1,5 +1,20 @@
 services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: gemini-prompt-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: embeddings_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
   api:
+    depends_on:
+      - db
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,6 +25,14 @@ services:
       - .env
     environment:
       - PORT=3000
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=embeddings_db
     volumes:
       - ./src:/app/src
+      - ./docs:/app/docs
     restart: unless-stopped
+
+volumes:
+  pgdata:
