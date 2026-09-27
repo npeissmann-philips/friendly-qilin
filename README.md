@@ -50,8 +50,8 @@ The ultimate goal is to build a solid foundation in Artificial Intelligence Arch
 ### 🛠️ Phase 3: Tool Calling & The Dawn of Agents (Week 3)
 *Transforming the LLM from a text generator into an action-taking agent.*
 
-- [ ] **Function / Tool Calling:**
-  - Defining JSON Schemas describing application functions (e.g., `get_customer_balance(cpf)`).
+- [x] **Function / Tool Calling:**
+  - Defining JSON Schemas describing application functions (e.g., `count_database_files`, `query_rag_knowledge_base`).
   - Handling the LLM's structured JSON response requesting execution of function X with parameters Y.
   - Executing local code and passing results back to the LLM to formulate the final answer.
 - [ ] **Introduction to LangChain:**

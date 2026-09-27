@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger.js';
 import { generateRouter } from './routes/generate.js';
+import { embeddingRouter } from './routes/embedding.js';
+import { toolsRouter } from './routes/tools.js';
 
 dotenv.config();
 
@@ -19,6 +21,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // API routes
 app.use('/api', generateRouter);
+app.use('/api', embeddingRouter);
+app.use('/api', toolsRouter);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

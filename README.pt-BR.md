@@ -50,10 +50,10 @@ O objetivo final é construir uma base sólida em arquitetura de inteligência a
 ### 🛠️ Fase 3: Tool Calling e o Início dos Agentes (3ª Semana)
 *Transformando o LLM de um gerador de texto em um agente de ação.*
 
-- [ ] **Function / Tool Calling:**
-  - Envio de JSON Schemas descrevendo funções do sistema para o LLM.
-  - Processamento do retorno estruturado do LLM solicitando a execução de funções (ex: `buscar_saldo_cliente(cpf)`).
-  - Execução da função na aplicação e envio do resultado de volta ao LLM.
+- [x] **Function / Tool Calling:**
+  - Envio de JSON Schemas descrevendo funções do sistema para o LLM (ex: `count_database_files`, `query_rag_knowledge_base`).
+  - Processamento do retorno estruturado do LLM solicitando a execução de funções.
+  - Execução da função na aplicação e envio do resultado de volta ao LLM para formulação da resposta final.
 - [ ] **Introdução ao LangChain:**
   - Uso do LangChain.js para encapsulamento de pipelines.
   - Criação de `Chains` conectando o LLM a ferramentas simuladas (ex: APIs de consulta de CEP, clima ou cotação de moedas).
